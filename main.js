@@ -98,8 +98,7 @@ router.get('/', async ctx => {
 });
 
 router.post('/slack', async ctx => {
-    console.log('params', ctx.request.body);
-    await commandHandler(ctx.request.body.text || '');
+    await commandHandler(ctx, ctx.request.body.text || '');
 });
 
 router.get('/slack', async ctx => {
