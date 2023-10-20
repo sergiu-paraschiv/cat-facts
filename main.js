@@ -1,4 +1,5 @@
 const Koa = require('koa');
+const Bodyparser = require('koa-bodyparser');
 const Router = require('koa-router');
 const Yargs = require('yargs');
 const Sqlite = require('sqlite3');
@@ -97,8 +98,8 @@ router.get('/', async ctx => {
 });
 
 router.post('/slack', async ctx => {
-    console.log('params', ctx.params);
-    await commandHandler(ctx, ctx.params.text || '');
+    console.log('params', ctx.request.body);
+    await commandHandler(ctx.request.body.text || '');
 });
 
 router.get('/slack', async ctx => {
@@ -118,6 +119,9 @@ async function commandHandler(ctx, commandText) {
 
 async function start() {
     app
+        .use(Bodyparser({
+            enableTypes: ['text', 'form']
+        }))
         .use(router.routes())
         .use(router.allowedMethods());
         
