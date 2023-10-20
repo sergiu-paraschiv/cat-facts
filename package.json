@@ -1,0 +1,21 @@
+{
+  "name": "cats",
+  "version": "1.0.0",
+  "description": "Cat Facts Over 9000",
+  "scripts": {
+    "serve": "cross-env PORT=3000 node main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.14.2",
+    "koa-router": "^11.0.2",
+    "sqlite": "^5.0.1",
+    "sqlite3": "^5.1.6",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.13.10",
+    "cross-env": "^7.0.3"
+  }
+}
